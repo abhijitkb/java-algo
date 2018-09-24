@@ -6,3 +6,9 @@ Memoisation is an optimisation technique used primarily to speed up computer pro
 function calls and returning the cached result when the same inputs occur again and again.
 * Fibonacci
 * ln(N!)
+* Binomial
+
+## General
+-------------------------------------------------
+* Euclid's Algorithm for Greatest Common Divisor
+* Remove duplicates using BinarySearch

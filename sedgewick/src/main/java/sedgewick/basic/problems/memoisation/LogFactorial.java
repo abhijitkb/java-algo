@@ -1,9 +1,9 @@
-package sedgewick.basic.problems.memoisation.memoisation;
+package sedgewick.basic.problems.memoisation;
 
 /**
  * 1.1.20 Problem : ln(N!)  => Natural log of factorial N
  */
-public class LogFactorial {
+public final class LogFactorial {
     public static final int MAX_SIZE = 50;
     private static long[] factorials = new long[MAX_SIZE + 1];
     private static double[] lnFactorials = new double[MAX_SIZE + 1];

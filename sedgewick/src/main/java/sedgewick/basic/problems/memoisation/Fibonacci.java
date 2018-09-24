@@ -1,4 +1,4 @@
-package sedgewick.basic.problems.memoisation.memoisation;
+package sedgewick.basic.problems.memoisation;
 
 /**
  * Problem 1.1.19 Efficient Fibonacci Series
