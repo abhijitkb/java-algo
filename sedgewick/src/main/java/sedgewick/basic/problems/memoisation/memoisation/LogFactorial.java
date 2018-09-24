@@ -1,4 +1,4 @@
-package sedgewick.basic.problems;
+package sedgewick.basic.problems.memoisation.memoisation;
 
 /**
  * 1.1.20 Problem : ln(N!)  => Natural log of factorial N
@@ -12,10 +12,9 @@ public class LogFactorial {
         if((number == 0) || (number == 1))
             return 1;
 
-        long factorial = factorials[number];
-        if(factorial == 0)
-            factorial = number * factorial(number - 1);
-        return factorial;
+        if(factorials[number] == 0)
+            factorials[number] = number * factorial(number - 1);
+        return factorials[number];
     }
 
     public static double  lnFactorial(final int number) {
@@ -25,12 +24,11 @@ public class LogFactorial {
         if(number == 1)
             return 0;
 
-        double lnFactorial = lnFactorials[number];
-        if(lnFactorial == 0) {
+        if(lnFactorials[number] == 0) {
             long factorial = factorial(number);
-            lnFactorial = Math.log(factorial);
+            lnFactorials[number] = Math.log(factorial);
         }
 
-        return lnFactorial;
+        return lnFactorials[number];
     }
 }

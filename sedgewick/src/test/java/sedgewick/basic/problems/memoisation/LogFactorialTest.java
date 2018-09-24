@@ -1,7 +1,8 @@
-package sedgewick.basic.problems;
+package sedgewick.basic.problems.memoisation;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import sedgewick.basic.problems.memoisation.memoisation.LogFactorial;
 
 
 class LogFactorialTest {
