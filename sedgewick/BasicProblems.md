@@ -1,5 +1,10 @@
 #Basic Programming Problems
 
+_Stack_
+-------------------------------------------------
+* Check Matching Parentheses.
+* Binary Representation.
+
 _Memoisation_
 -------------------------------------------------
 Memoisation is an optimisation technique used primarily to speed up computer programs by storing results of expensive
@@ -13,3 +18,4 @@ _General_
 * Euclid's Algorithm for Greatest Common Divisor
 * Remove duplicates using BinarySearch
 * Circular String
+* Accumulator - Welford's online algorithm for calculating mean, variance and stddev for streaming numbers.
