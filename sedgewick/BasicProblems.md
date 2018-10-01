@@ -4,6 +4,9 @@ _Stack_
 -------------------------------------------------
 * Check Matching Parentheses.
 * Binary Representation.
+* Fix Infix
+* Infix To Postfix
+* PostFix Evaluation
 
 _Memoisation_
 -------------------------------------------------
