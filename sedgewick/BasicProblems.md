@@ -8,6 +8,10 @@ _Stack_
 * Infix To Postfix
 * PostFix Evaluation
 
+_Linked List_
+-------------
+* Linked List Reverse using Recursion
+
 _Memoisation_
 -------------------------------------------------
 Memoisation is an optimisation technique used primarily to speed up computer programs by storing results of expensive
