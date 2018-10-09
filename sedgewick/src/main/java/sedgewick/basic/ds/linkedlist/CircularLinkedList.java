@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.Objects;
 
 public class CircularLinkedList<T> implements Iterable<T> {
-    private class Node<T> {
+    private static class Node<T> {
         T value;
         Node<T> next;
 
