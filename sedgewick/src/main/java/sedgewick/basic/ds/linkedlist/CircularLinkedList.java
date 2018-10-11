@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.Objects;
 
 public class CircularLinkedList<T> implements Iterable<T> {
-    private static class Node<T> {
+    public static class Node<T> {
         T value;
         Node<T> next;
 
@@ -48,12 +48,13 @@ public class CircularLinkedList<T> implements Iterable<T> {
 
     public void remove(final T value) {
         if(this.last != null) {
-            Node<T> node = this.last.next;
-            while((this.last != null) && (node != this.last)) {
+            Node<T> node = this.last;
+            do {
                 if(node.next.value.equals(value)) {
-                    removeAfter(node.next);
+                    removeAfter(node);
                 }
-            }
+                node = node.next;
+            } while((this.last != null) && (node != this.last));
         }
     }
 
@@ -81,7 +82,7 @@ public class CircularLinkedList<T> implements Iterable<T> {
         return deletedNode;
     }
 
-    private Node<T> findNode(final T value) {
+    public Node<T> findNode(final T value) {
         for(Node<T> current = this.last; (current != null) && (current != current.next); current = current.next) {
             if(current.value.equals(value)) {
                 return current;

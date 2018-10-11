@@ -1,7 +1,7 @@
 package sedgewick.basic.ds.linkedlist;
 
 public class DoublyLinkedList<T> {
-    private static class Node<T> {
+    static class Node<T> {
         T value;
         Node<T> prev = null;
         Node<T> next = null;
@@ -88,4 +88,26 @@ public class DoublyLinkedList<T> {
             node.next = null;
         }
     }
+
+    public Node<T> find(final T value) {
+        for(Node<T> element = this.head; element != null; element = element.next) {
+            if(element.value.equals(value))
+                return element;
+        }
+        return null;
+    }
+
+    public Node<T> remove(final T value) {
+        Node<T> node = find(value);
+        if(node != null) {
+            remove(node);
+        }
+
+        return node;
+    }
+
+    public boolean isEmpty() {
+        return (this.head == null);
+    }
+
 }
