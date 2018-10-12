@@ -1,10 +1,11 @@
 package sedgewick.basic.ds.queue;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
-public class FifoQueue<Item> implements Iterable<Item> {
-    private Node head;
-    private Node tail;
+public class FifoQueue<Item> implements Queue<Item> {
+    private Node<Item> head;
+    private Node<Item> tail;
     private int size;
 
     @Override
@@ -12,33 +13,41 @@ public class FifoQueue<Item> implements Iterable<Item> {
         return new QueueIterator();
     }
 
-    private class Node {
-        Item item;
+    private static class Node<Item> {
+        Item value;
         Node next;
 
-        Node(final Item item, Node next) {
-            this.item = item;
+        Node(final Item value, Node next) {
+            this.value = value;
             this.next = next;
         }
 
-        Node(final Item item) {
-            this(item, null);
+        Node(final Item value) {
+            this(value, null);
         }
     }
 
+    @Override
     public boolean isEmpty() { return this.head == null; }
+
+    @Override
     public int size() { return this.size; }
 
+    @Override
     public void enqueue(final Item item) {
-        Node tail = this.tail;
-        this.tail = new Node(item);
+        Node<Item> tail = this.tail;
+        this.tail = new Node<>(item);
         if(isEmpty())   head = this.tail;
         else            tail.next = this.tail;
         ++size;
     }
 
+    @Override
     public Item dequeue() {
-        Item item = head.item;
+        if(isEmpty())
+            throw new NoSuchElementException();
+
+        Item item = head.value;
         this.head = this.head.next;
         --size;
         if(isEmpty()) this.tail = null;
@@ -46,7 +55,7 @@ public class FifoQueue<Item> implements Iterable<Item> {
     }
 
     private class QueueIterator implements Iterator<Item> {
-        private Node node = head;
+        private Node<Item> node = head;
 
         @Override
         public boolean hasNext() {
@@ -55,7 +64,10 @@ public class FifoQueue<Item> implements Iterable<Item> {
 
         @Override
         public Item next() {
-            Item value = node.item;
+            if(!hasNext())
+                throw new NoSuchElementException();
+
+            Item value = node.value;
             node = node.next;
             return value;
         }
