@@ -1,4 +1,4 @@
-#Basic Programming Problems
+# Basic Programming Problems
 
 _Stack_
 -------------------------------------------------
@@ -9,8 +9,12 @@ _Stack_
 * PostFix Evaluation
 
 _Linked List_
--------------
+-------------------------------------------------
 * Linked List Reverse using Recursion
+
+_Queue_
+-------------------------------------------------
+* Move To Front
 
 _Memoisation_
 -------------------------------------------------
