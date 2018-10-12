@@ -7,6 +7,7 @@ _Stack_
 * Fix Infix
 * Infix To Postfix
 * PostFix Evaluation
+* Text Editor Buffer
 
 _Linked List_
 -------------------------------------------------

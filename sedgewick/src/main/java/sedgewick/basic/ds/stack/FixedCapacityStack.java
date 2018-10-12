@@ -1,6 +1,8 @@
 package sedgewick.basic.ds.stack;
 
-public class FixedCapacityStack<Item> {
+import java.util.NoSuchElementException;
+
+public class FixedCapacityStack<Item> implements Stack<Item> {
     private Item []  items;
     private final int capacity;
     private int size = -1;
@@ -11,24 +13,39 @@ public class FixedCapacityStack<Item> {
         this.items = (Item [])new Object[capacity];
     }
 
+    @Override
     public boolean isEmpty() { return this.size == 0; }
+
     public boolean isFull() { return this.capacity == this.size; }
+
+    @Override
     public int size() { return this.size; }
 
-    public void push(final Item item) {
+    @Override
+    public void push(final Item item) throws Exception {
+        if(isFull())
+            throw new Exception("Stack is full!");
+
         if(this.size < this.capacity) {
             this.items[this.size++] = item;
-        } else {
-            throw new IndexOutOfBoundsException(String.format("%s is full!", getClass().getSimpleName()));
+            return;
         }
+
+        throw new NoSuchElementException();
     }
 
-    public Item pop() {
-        if(isEmpty()) {
-            throw new IndexOutOfBoundsException(String.format("%s is empty!", getClass().getSimpleName()));
-        }
+    @Override
+    public Item pop() throws NoSuchElementException {
+        if(isEmpty())   throw new NoSuchElementException();
+
         Item item = this.items[--this.size];
         this.items[size] = null;
         return item;
+    }
+
+    @Override
+    public Item top() throws NoSuchElementException {
+        if(isEmpty())       throw new NoSuchElementException();
+        return this.items[this.size - 1];
     }
 }

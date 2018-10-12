@@ -2,7 +2,7 @@ package sedgewick.basic.ds.stack;
 
 import java.util.Iterator;
 
-public class PushDownStack<Item> implements Iterable<Item> {
+public class PushDownStack<Item> implements Iterable<Item>, Stack<Item> {
     private Node head = null;
     private int size = 0;
 
@@ -20,27 +20,39 @@ public class PushDownStack<Item> implements Iterable<Item> {
         }
     }
 
+    @Override
     public boolean isEmpty() {
         return this.head == null;
     }
 
+    @Override
     public int size() {
         return this.size;
     }
 
+    @Override
     public void push(final Item item) {
         Node old = head;
         head = new Node(item, old);
         ++size;
     }
 
-    public Item pop() {
+    @Override
+    public Item pop() throws NoSuchFieldException {
         if(isEmpty())
-            throw new IndexOutOfBoundsException(String.format("%s is empty!", getClass().getSimpleName()));
+            throw new NoSuchFieldException();
         Item item = head.value;
         head = head.next;
         --size;
         return item;
+    }
+
+    @Override
+    public Item top() throws NoSuchFieldException {
+        if(isEmpty())
+            throw new NoSuchFieldException();
+
+        return this.head.value;
     }
 
     @Override

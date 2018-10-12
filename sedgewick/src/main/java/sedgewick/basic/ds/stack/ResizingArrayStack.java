@@ -2,7 +2,7 @@ package sedgewick.basic.ds.stack;
 
 import java.util.Iterator;
 
-public class ResizingArrayStack<Item> implements Iterable<Item> {
+public class ResizingArrayStack<Item> implements Iterable<Item>, Stack<Item> {
     private Item []  items;
     private int size;
 
@@ -12,9 +12,27 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
         this.items = (Item [])new Object[1];
     }
 
+    public ResizingArrayStack(final Stack<Item> other) throws Exception {
+        Stack<Item> stack = new ResizingArrayStack<>();
+        while(!other.isEmpty()) {
+            stack.push(other.pop());
+        }
+
+        Item value;
+        while(!stack.isEmpty()) {
+            value = stack.pop();
+            push(value);
+            other.push(value);
+        }
+    }
+
+    @Override
     public boolean isEmpty() { return this.size == 0; }
+
+    @Override
     public int size() { return this.size; }
 
+    @Override
     public void push(final Item item) {
         if(this.size == this.items.length)
             resize(this.items.length * 2);
@@ -22,13 +40,22 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
         this.items[this.size++] = item;
     }
 
-    public Item pop() {
+    @Override
+    public Item pop() throws NoSuchFieldException {
         if(isEmpty()) {
-            throw new IndexOutOfBoundsException(String.format("%s is empty!", getClass().getSimpleName()));
+            throw new NoSuchFieldException();
         }
         Item item = this.items[--this.size];
         this.items[size] = null;
         return item;
+    }
+
+    @Override
+    public Item top() throws NoSuchFieldException {
+        if(isEmpty()) {
+            throw new NoSuchFieldException();
+        }
+        return this.items[this.size - 1];
     }
 
     private void resize(final int newSize) {

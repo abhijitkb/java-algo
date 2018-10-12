@@ -17,6 +17,21 @@ public class LinkedGeneralisedQueue <T> implements Queue<T> {
     private Node<T> head = null;
     private Node<T> tail = null;
 
+    public LinkedGeneralisedQueue() {}
+
+    public LinkedGeneralisedQueue(final Queue<T> queue) {
+        Queue<T> temp = new LinkedGeneralisedQueue<>();
+        while(!queue.isEmpty())
+            temp.enqueue(queue.dequeue());
+
+        T value;
+        while (!temp.isEmpty()) {
+            value = temp.dequeue();
+            queue.enqueue(value);
+            enqueue(value);
+        }
+    }
+
     @Override
     public int size() {
         return this.size;
