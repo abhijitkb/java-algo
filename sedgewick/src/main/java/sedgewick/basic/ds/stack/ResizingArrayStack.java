@@ -1,5 +1,6 @@
 package sedgewick.basic.ds.stack;
 
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 
 public class ResizingArrayStack<Item> implements Iterable<Item>, Stack<Item> {
@@ -71,17 +72,22 @@ public class ResizingArrayStack<Item> implements Iterable<Item>, Stack<Item> {
     }
 
     private class ReverseArrayIterator implements Iterator<Item> {
+        private final int sizeAtCreation = size;
         private int index = size;
 
 
         @Override
         public boolean hasNext() {
-
+            if(sizeAtCreation != size)
+                throw new ConcurrentModificationException();
             return index > 0;
         }
 
         @Override
         public Item next() {
+            if(sizeAtCreation != size)
+                throw new ConcurrentModificationException();
+
             return items[--index];
         }
     }

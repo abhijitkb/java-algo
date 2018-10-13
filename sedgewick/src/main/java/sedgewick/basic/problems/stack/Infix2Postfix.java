@@ -25,7 +25,7 @@ public class Infix2Postfix {
         return false;
     }
 
-    public static String getPostFix(final String infix) {
+    public static String getPostFix(final String infix) throws NoSuchFieldException {
         List<String> postFixExpr = new ArrayList<>();
         ResizingArrayStack<Character> operators = new ResizingArrayStack<>();
 

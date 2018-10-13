@@ -24,11 +24,11 @@ public class CheckParenthesesMatch {
         this.parentheses.push(character);
     }
 
-    private Character pop() {
+    private Character pop() throws NoSuchFieldException {
         return this.parentheses.pop();
     }
 
-    public boolean check(final String text) {
+    public boolean check(final String text) throws NoSuchFieldException {
         if ((text == null) || text.isEmpty())
             return true;
 
@@ -47,7 +47,7 @@ public class CheckParenthesesMatch {
         return matched;
     }
 
-    private boolean matchClosingParenthesis(final Character closingParenthesis) {
+    private boolean matchClosingParenthesis(final Character closingParenthesis) throws NoSuchFieldException {
         Character openingParenthesis = parenthesisMatcher.get(closingParenthesis);
 
         Character current;

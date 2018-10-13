@@ -4,7 +4,7 @@ import sedgewick.basic.ds.stack.ResizingArrayStack;
 
 public class PostFixEval {
 
-    private static void eval(final ResizingArrayStack<Double> operands, final char operator) {
+    private static void eval(final ResizingArrayStack<Double> operands, final char operator) throws NoSuchFieldException {
         double later = operands.pop();
         double former = operands.pop();
         double result = eval(former, later, operator);
@@ -37,7 +37,7 @@ public class PostFixEval {
         return false;
     }
 
-    public static double eval(final String postFixExpr) {
+    public static double eval(final String postFixExpr) throws NoSuchFieldException {
         ResizingArrayStack<Character> operators = new ResizingArrayStack<>();
         ResizingArrayStack<Double> operands = new ResizingArrayStack<>();
 

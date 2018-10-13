@@ -1,5 +1,9 @@
 # Basic Programming Problems
 
+_Linked List_
+-------------------------------------------------
+* Linked List Reverse using Recursion
+
 _Stack_
 -------------------------------------------------
 * Check Matching Parentheses.
@@ -9,9 +13,9 @@ _Stack_
 * PostFix Evaluation
 * Text Editor Buffer
 
-_Linked List_
--------------------------------------------------
-* Linked List Reverse using Recursion
+_Deque_
+-------
+* Two Stack Implementation
 
 _Queue_
 -------------------------------------------------

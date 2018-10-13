@@ -13,7 +13,7 @@ your program should print:
  */
 public class FixInfixExpr {
 
-    public static String fixInfix(final String exprStr) {
+    public static String fixInfix(final String exprStr) throws NoSuchFieldException {
         ResizingArrayStack<Character> operators = new ResizingArrayStack<>();
         ResizingArrayStack<String> operands = new ResizingArrayStack<>();
 

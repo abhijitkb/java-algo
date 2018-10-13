@@ -15,19 +15,19 @@ class CheckParenthesesMatchTest {
     }
 
     @Test
-    void testSimpleMatch() {
+    void testSimpleMatch() throws NoSuchFieldException {
         String str = "()";
         Assertions.assertTrue(matcher.check(str));
     }
 
     @Test
-    void testSimpleMisMatch() {
+    void testSimpleMisMatch() throws NoSuchFieldException {
         String str = ")(";
         Assertions.assertFalse(matcher.check(str));
     }
 
     @Test
-    void testComplexMatch() {
+    void testComplexMatch() throws NoSuchFieldException {
         String str = "[()]{}{[()()]()}";
         Assertions.assertTrue(matcher.check(str));
 

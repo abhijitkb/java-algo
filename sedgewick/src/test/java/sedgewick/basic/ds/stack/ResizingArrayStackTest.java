@@ -24,7 +24,7 @@ class ResizingArrayStackTest {
     }
 
     @Test
-    void testPops() {
+    void testPops() throws NoSuchFieldException {
         stack.push("Hello");
         stack.push("World");
         stack.push("Everyone");
@@ -40,7 +40,7 @@ class ResizingArrayStackTest {
     }
 
     @Test
-    void testPushPops() {
+    void testPushPops() throws NoSuchFieldException {
         stack.push("Hello");
         stack.push("World");
         stack.push("Everyone");
