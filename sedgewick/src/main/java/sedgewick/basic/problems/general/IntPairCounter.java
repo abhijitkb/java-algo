@@ -7,7 +7,7 @@ public class IntPairCounter {
     private static int binarySearch(int [] input, int low, int high, int value) {
         int mid;
         while(low <= high) {
-            mid = (low + (high - low)) >> 1;
+            mid = low + ((high - low) >> 1);
 
             if(value == input[mid])
                 return mid;

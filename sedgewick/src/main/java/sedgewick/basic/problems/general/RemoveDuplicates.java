@@ -14,7 +14,7 @@ public final class RemoveDuplicates {
         int mid;
 
         while(low <= high) {
-            mid = low + (high - low)/2;
+            mid = low + ((high - low) >> 1);
             if(key == intList.get(mid))
                 return true;
 

@@ -8,23 +8,27 @@ import java.util.Arrays;
  * Program should use ~2lg N compares in the worst case...
  */
 public class LocalMinimum {
-    public int localMin(final int [] values) {
+    public static int localMin(final int [] values) {
         assert values.length >= 3 : "The input array should have at least 3 elements";
 
         int low = 0;
         int high = values.length - 1;
-        int mid;
+        int mid = 0;
 
-        while(low <= high) {
-            mid = low + (high - low) >> 1;
-            double diffLeft = values[mid] - values[mid - 1];
-            double diffRight = values[mid + 1] - values[mid];
+        int leftDiff;
+        int rightDiff;
 
-            double compareResult = Double.compare(diffLeft, diffRight);
-            if(compareResult == 0)
+        // Loop only till there are at least 1 element between high and low
+        while((high - low) > 1) {
+            mid = low + ((high - low) >> 1);
+
+            leftDiff = values[mid] - values[mid - 1];
+            rightDiff = values[mid] - values[mid + 1];
+
+            if((leftDiff < 0) && (rightDiff < 0))
                 return mid;
 
-            if(compareResult < 0)
+            if(leftDiff < rightDiff)
                 high = mid - 1;
             else
                 low = mid + 1;
