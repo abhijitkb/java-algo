@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /**
  * Given an array a[] of N distinct integers,
- * finds a local minimum: an index i such that a[i-1] < a[i] < a[i+1].
+ * finds a local minimum: an index i such that <b>{@code a[i] < a[i-1]} && {@code a[i] < a[i+1]} </b>
  * Program should use ~2lg N compares in the worst case...
  */
 public class LocalMinimum {
