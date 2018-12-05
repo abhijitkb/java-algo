@@ -44,7 +44,7 @@ public class LinkedGeneralisedQueue <T> implements Queue<T> {
 
     @Override
     public void enqueue(T value) {
-        Node<T> node = new Node(value);
+        Node<T> node = new Node<>(value);
         if(isEmpty()) {
             this.head = this.tail = node;
         } else {

@@ -16,7 +16,7 @@ public class StackGenerality {
      * @param input   Input for Stack
      * @param output  Expected possible output permutation
      * @param <T>     Underlying Type
-     * @return          True is the output pattern can be matched.
+     * @return        True is the output pattern can be matched.
      */
     public static <T> boolean canMatchOutputUnique(List<T> input, List<T> output) {
         Objects.requireNonNull(input);

@@ -22,9 +22,9 @@ public class FixedCapacityStack<Item> implements Stack<Item> {
     public int size() { return this.size; }
 
     @Override
-    public void push(final Item item) throws Exception {
+    public void push(final Item item) {
         if(isFull())
-            throw new Exception("Stack is full!");
+            throw new IllegalStateException("Stack is full!");
 
         if(this.size < this.capacity) {
             this.items[this.size++] = item;
@@ -35,7 +35,7 @@ public class FixedCapacityStack<Item> implements Stack<Item> {
     }
 
     @Override
-    public Item pop() throws NoSuchElementException {
+    public Item pop() {
         if(isEmpty())   throw new NoSuchElementException();
 
         Item item = this.items[--this.size];
@@ -44,7 +44,7 @@ public class FixedCapacityStack<Item> implements Stack<Item> {
     }
 
     @Override
-    public Item top() throws NoSuchElementException {
+    public Item top() {
         if(isEmpty())       throw new NoSuchElementException();
         return this.items[this.size - 1];
     }

@@ -2,6 +2,7 @@ package sedgewick.basic.ds.stack;
 
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class ResizingArrayStack<Item> implements Iterable<Item>, Stack<Item> {
     private Item []  items;
@@ -42,9 +43,9 @@ public class ResizingArrayStack<Item> implements Iterable<Item>, Stack<Item> {
     }
 
     @Override
-    public Item pop() throws NoSuchFieldException {
+    public Item pop() throws NoSuchElementException {
         if(isEmpty()) {
-            throw new NoSuchFieldException();
+            throw new NoSuchElementException();
         }
         Item item = this.items[--this.size];
         this.items[size] = null;
@@ -52,9 +53,9 @@ public class ResizingArrayStack<Item> implements Iterable<Item>, Stack<Item> {
     }
 
     @Override
-    public Item top() throws NoSuchFieldException {
+    public Item top() throws NoSuchElementException {
         if(isEmpty()) {
-            throw new NoSuchFieldException();
+            throw new NoSuchElementException();
         }
         return this.items[this.size - 1];
     }

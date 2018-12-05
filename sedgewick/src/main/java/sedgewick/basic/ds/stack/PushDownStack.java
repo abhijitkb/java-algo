@@ -1,6 +1,7 @@
 package sedgewick.basic.ds.stack;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class PushDownStack<Item> implements Iterable<Item>, Stack<Item> {
     private Node head = null;
@@ -38,9 +39,9 @@ public class PushDownStack<Item> implements Iterable<Item>, Stack<Item> {
     }
 
     @Override
-    public Item pop() throws NoSuchFieldException {
+    public Item pop() throws NoSuchElementException {
         if(isEmpty())
-            throw new NoSuchFieldException();
+            throw new NoSuchElementException();
         Item item = head.value;
         head = head.next;
         --size;
@@ -48,9 +49,9 @@ public class PushDownStack<Item> implements Iterable<Item>, Stack<Item> {
     }
 
     @Override
-    public Item top() throws NoSuchFieldException {
+    public Item top() throws NoSuchElementException {
         if(isEmpty())
-            throw new NoSuchFieldException();
+            throw new NoSuchElementException();
 
         return this.head.value;
     }
