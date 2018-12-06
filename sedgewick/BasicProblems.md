@@ -42,3 +42,4 @@ _Search_
 * Implementation of Lower Bound (binary search)
 * StaticSetOfInts - usage of lower and upper bounds.
 * Bitonic Search
+* Mihai Pastrascu Binary Search - Binary Search with Addition and Subtraction
