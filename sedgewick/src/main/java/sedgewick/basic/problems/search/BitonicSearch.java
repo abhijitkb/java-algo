@@ -1,4 +1,4 @@
-package sedgewick.basic.problems.general;
+package sedgewick.basic.problems.search;
 
 import org.jetbrains.annotations.NotNull;
 

@@ -1,6 +1,7 @@
-package sedgewick.basic.problems.general;
+package sedgewick.basic.problems.search;
 
 import org.junit.jupiter.api.Test;
+import sedgewick.basic.problems.search.BitonicSearch;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;

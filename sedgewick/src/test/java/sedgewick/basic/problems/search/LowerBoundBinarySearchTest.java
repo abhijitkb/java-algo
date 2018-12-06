@@ -1,9 +1,8 @@
-package sedgewick.basic.problems.general;
+package sedgewick.basic.problems.search;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
+import sedgewick.basic.problems.search.LowerBoundBinarySearch;
 
 class LowerBoundBinarySearchTest {
 

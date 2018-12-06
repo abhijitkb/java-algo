@@ -1,4 +1,4 @@
-package sedgewick.basic.problems.general;
+package sedgewick.basic.problems.search;
 
 public class LowerBoundBinarySearch {
 

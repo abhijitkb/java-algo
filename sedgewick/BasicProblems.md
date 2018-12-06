@@ -36,6 +36,9 @@ _General_
 * Circular String
 * Accumulator - Welford's online algorithm for calculating mean, variance and stddev for streaming numbers.
 * Print common int in two integer arrays (of same length) in sorted order.
+
+_Search_
+--------
 * Implementation of Lower Bound (binary search)
 * StaticSetOfInts - usage of lower and upper bounds.
 * Bitonic Search
