@@ -38,3 +38,4 @@ _General_
 * Print common int in two integer arrays (of same length) in sorted order.
 * Implementation of Lower Bound (binary search)
 * StaticSetOfInts - usage of lower and upper bounds.
+* Bitonic Search
