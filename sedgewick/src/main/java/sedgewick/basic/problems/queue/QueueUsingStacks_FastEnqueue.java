@@ -1,5 +1,6 @@
 package sedgewick.basic.problems.queue;
 
+import org.jetbrains.annotations.NotNull;
 import sedgewick.basic.ds.queue.Queue;
 import sedgewick.basic.ds.stack.ResizingArrayStack;
 import sedgewick.basic.ds.stack.Stack;
@@ -7,59 +8,46 @@ import sedgewick.basic.ds.stack.Stack;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+/**
+ * Enqueue is O(1) while Dequeue is O(n)
+ * @param <E> The underlying type
+ */
 public final class QueueUsingStacks_FastEnqueue <E> implements Queue<E> {
-    private final Stack<E> stack1 = new ResizingArrayStack<>();
-    private final Stack<E> stack2 = new ResizingArrayStack<>();
-
-    private int activeStackIndex = 0;
-
+    private final Stack<E> activeStack = new ResizingArrayStack<>();
+    private final Stack<E> workingStack = new ResizingArrayStack<>();
 
     @Override
     public int size() {
-        return getActiveStack().size();
+        return this.activeStack.size();
     }
 
     @Override
     public boolean isEmpty() {
-        return getActiveStack().isEmpty();
+        return this.activeStack.isEmpty();
     }
 
     @Override
     public void enqueue(E value) {
-        getActiveStack().push(value);
+        this.activeStack.push(value);
     }
 
     @Override
     public E dequeue() {
-        Stack<E> activeStack = getActiveStack();
-        Stack<E> workStack = getWorkStack();
+        // pop all elements from the active stack and push into the working stack
+        while(!this.activeStack.isEmpty())
+            this.workingStack.push(this.activeStack.pop());
 
-        // pop all elements of active stack and push them to work stack (in order)
-        // pop work stack and return the popped element.
-        while(!activeStack.isEmpty())
-            workStack.push(activeStack.pop());
-        final E item = workStack.pop();
-        while(!workStack.isEmpty())
-            activeStack.push(workStack.pop());
+        final E value = this.workingStack.pop();
 
-        return item;
+        while(!this.workingStack.isEmpty())
+            this.activeStack.push(this.workingStack.pop());
+
+        return value;
     }
 
+    @NotNull
     @Override
     public Iterator<E> iterator() {
         throw new UnsupportedOperationException();
-    }
-
-    private Stack<E> getActiveStack() {
-        return (this.activeStackIndex == 0) ? this.stack1 : this.stack2;
-    }
-
-    private Stack<E> getWorkStack() {
-        return (this.activeStackIndex != 0) ? this.stack1 : this.stack2;
-    }
-
-    private Stack<E> toggleActiveStack() {
-        this.activeStackIndex = (this.activeStackIndex + 1) & 1;
-        return getActiveStack();
     }
 }

@@ -20,6 +20,7 @@ _Deque_
 _Queue_
 -------------------------------------------------
 * Move To Front
+* Queue Implementation using 2 Stacks (2 Implementations: fast enqueue; fast dequeue)
 
 _Memoisation_
 -------------------------------------------------

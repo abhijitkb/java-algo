@@ -9,23 +9,25 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-class QueueUsingStacks_FastDequeueTest {
+import static org.junit.jupiter.api.Assertions.*;
+
+class QueueUsingStacks_FastEnqueueTest {
     @Test
     void testDequeueEmptyQueue() {
-        Queue<Integer> queue = new QueueUsingStacks_FastDequeue<>();
+        Queue<Integer> queue = new QueueUsingStacks_FastEnqueue<>();
         Assertions.assertThrows(NoSuchElementException.class, queue::dequeue);
     }
 
     @Test
     void testEnqueueSingle() {
-        Queue<Integer> queue = new QueueUsingStacks_FastDequeue<>();
+        Queue<Integer> queue = new QueueUsingStacks_FastEnqueue<>();
         queue.enqueue(1);
         Assertions.assertEquals(new Integer(1), queue.dequeue());
     }
 
     @Test
     void testEnqueueDouble() {
-        Queue<Integer> queue = new QueueUsingStacks_FastDequeue<>();
+        Queue<Integer> queue = new QueueUsingStacks_FastEnqueue<>();
         List<Integer> values = Arrays.asList(1, 2, 3);
         values.forEach(value -> {
             try {
@@ -39,4 +41,5 @@ class QueueUsingStacks_FastDequeueTest {
 
         Assertions.assertEquals(values, results);
     }
+
 }
