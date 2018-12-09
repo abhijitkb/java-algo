@@ -25,7 +25,8 @@ _Queue_
 
 _Steque_
 --------
-* Steque with a queue.
+* Steque using a queue.
+* Steque using two stacks.
 
 _Memoisation_
 -------------------------------------------------
