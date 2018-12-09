@@ -17,6 +17,7 @@ _Stack_
 _Deque_
 -------
 * Two Stack Implementation
+* Stack and Steque Implementation
 
 _Queue_
 -------------------------------------------------

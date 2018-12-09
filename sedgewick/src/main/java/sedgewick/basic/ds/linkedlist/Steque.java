@@ -39,7 +39,7 @@ public class Steque<T>  {
         throw new NoSuchElementException();
     }
 
-    public T top() throws IllegalAccessException {
+    public T top() {
         if(isEmpty())
             throw new NoSuchElementException();
         return top.value;
@@ -69,5 +69,17 @@ public class Steque<T>  {
         node.prev = this.bottom;
         this.bottom.next = node;
         this.bottom = node;
+    }
+
+    public int size() {
+        int elementsNum = 0;
+
+        Node<T> node = this.top;
+        while(node != null) {
+            node = node.next;
+            ++elementsNum;
+        }
+
+        return elementsNum;
     }
 }

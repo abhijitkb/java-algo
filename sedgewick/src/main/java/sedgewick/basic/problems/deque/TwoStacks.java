@@ -1,6 +1,6 @@
 package sedgewick.basic.problems.deque;
 
-import sedgewick.basic.ds.deque.IDeque;
+import sedgewick.basic.ds.deque.Deque;
 import sedgewick.basic.ds.deque.ResizingArrayDeque;
 
 import java.util.NoSuchElementException;
@@ -10,7 +10,7 @@ import java.util.NoSuchElementException;
  * @param <T>
  */
 public class TwoStacks <T> {
-    private IDeque<T> deque;
+    private Deque<T> deque;
     private int leftStackSize = 0;
     private int rightStackSize = 0;
 

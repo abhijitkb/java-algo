@@ -1,12 +1,12 @@
 package sedgewick.basic.ds.deque;
 
-import java.util.Objects;
+import java.util.NoSuchElementException;
 
 /**
  * {@link DoublyLinkedListDeque} is an implementation of Deque using {@code DoublyLinkedList}
  * @param <T>
  */
-public class DoublyLinkedListDeque<T> implements IDeque<T> {
+public class DoublyLinkedListDeque<T> implements Deque<T> {
     private static class Node<T> {
         T element;
         Node<T> next = null;
@@ -99,5 +99,17 @@ public class DoublyLinkedListDeque<T> implements IDeque<T> {
         }
 
         throw new IllegalArgumentException("popLeft attempted on empty deque!");
+    }
+
+    @Override
+    public T head() {
+        if(this.left == null )  throw new NoSuchElementException();
+        return this.left.element;
+    }
+
+    @Override
+    public T tail() {
+        if(this.right == null )  throw new NoSuchElementException();
+        return this.right.element;
     }
 }

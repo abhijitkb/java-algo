@@ -1,6 +1,8 @@
 package sedgewick.basic.ds.deque;
 
-public class ResizingArrayDeque<T> implements IDeque<T> {
+import java.util.NoSuchElementException;
+
+public class ResizingArrayDeque<T> implements Deque<T> {
     private T[] elements;
     private int size = 0;
     private int capacity = 1; // start with default of 1
@@ -61,7 +63,7 @@ public class ResizingArrayDeque<T> implements IDeque<T> {
     @Override
     public T popLeft() {
         if(isEmpty())
-            throw new IllegalArgumentException("popLeft attempted on empty deque");
+            throw new NoSuchElementException("popLeft attempted on empty deque");
         T value = elements[0];
         --this.size;
         for(int i = 0; i < this.size; ++i) {
@@ -74,9 +76,23 @@ public class ResizingArrayDeque<T> implements IDeque<T> {
     @Override
     public T popRight() {
         if(isEmpty())
-            throw new IllegalArgumentException("popLeft attempted on empty deque");
+            throw new NoSuchElementException("popLeft attempted on empty deque");
         T value = elements[--size];
         elements[size] = null;
         return value;
+    }
+
+    @Override
+    public T head() {
+        if(isEmpty())
+            throw new NoSuchElementException("head attempted on empty deque");
+        return elements[0];
+    }
+
+    @Override
+    public T tail() {
+        if(isEmpty())
+            throw new NoSuchElementException("tail attempted on empty deque");
+        return elements[size - 1];
     }
 }
