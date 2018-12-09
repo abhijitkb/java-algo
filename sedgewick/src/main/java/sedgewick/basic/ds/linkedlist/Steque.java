@@ -1,5 +1,7 @@
 package sedgewick.basic.ds.linkedlist;
 
+import java.util.NoSuchElementException;
+
 /**
  * {@link Steque} is a stack-ended queue and supports push, pop and enqueue operations
  */
@@ -21,7 +23,7 @@ public class Steque<T>  {
 
     public boolean isEmpty() { return this.top == null; }
 
-    public T pop() throws IllegalAccessException {
+    public T pop() {
         if(!isEmpty()) {
             Node<T> node = this.top;
             final T value = top.value;
@@ -34,12 +36,12 @@ public class Steque<T>  {
             node.prev = node.next = null;
             return value;
         }
-        throw new IllegalAccessException("pop attempted on empty Steque");
+        throw new NoSuchElementException();
     }
 
     public T top() throws IllegalAccessException {
         if(isEmpty())
-            throw new IllegalAccessException("top attempted on empty Steque");
+            throw new NoSuchElementException();
         return top.value;
     }
 

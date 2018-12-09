@@ -44,13 +44,13 @@ class StequeTest {
     }
 
     @Test
-    void testEnqueThree() throws IllegalAccessException {
+    void testEnqueThree()  {
         List<Integer> values = Arrays.asList(1, 2, 3, 4);
         values.forEach(this.steque::enqueue);
         values.forEach( value -> {
             try {
                 Assertions.assertEquals(value, this.steque.pop());
-            } catch (IllegalAccessException e) {
+            } catch (Exception e) {
                 Assertions.fail(e.getMessage());
             }
         });

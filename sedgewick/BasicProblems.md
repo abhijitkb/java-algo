@@ -12,6 +12,7 @@ _Stack_
 * Infix To Postfix
 * PostFix Evaluation
 * Text Editor Buffer
+* Stack implementation using a Queue
 
 _Deque_
 -------
@@ -21,6 +22,10 @@ _Queue_
 -------------------------------------------------
 * Move To Front
 * Queue Implementation using 2 Stacks (2 Implementations: fast enqueue; fast dequeue)
+
+_Steque_
+--------
+* Steque with a queue.
 
 _Memoisation_
 -------------------------------------------------
