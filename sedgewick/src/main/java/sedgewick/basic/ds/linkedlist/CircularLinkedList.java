@@ -1,6 +1,7 @@
 package sedgewick.basic.ds.linkedlist;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 
 public class CircularLinkedList<T> implements Iterable<T> {
@@ -22,6 +23,15 @@ public class CircularLinkedList<T> implements Iterable<T> {
 
     public boolean isEmpty() {
         return this.last == null;
+    }
+
+    public int size() {
+        if(isEmpty()) return 0;
+        int numNodes = 1;
+        for (Node<T> node = this.last; node.next != this.last; node = node.next) {
+            ++numNodes;
+        }
+        return numNodes;
     }
 
     public void add(final T value) {
@@ -104,17 +114,40 @@ public class CircularLinkedList<T> implements Iterable<T> {
 
     private class CircularLinkedListIterator implements Iterator<T> {
         private Node<T> current = last;
+        private Node<T> previous;
+
+        public CircularLinkedListIterator() {
+            if(hasNext()) {
+                this.previous = this.current;
+                while(this.previous.next != this.current) {
+                    this.previous = this.previous.next;
+                }
+            }
+        }
 
         @Override
         public boolean hasNext() {
-            return (current == null) || (current.next == current);
+            return current != null;
         }
 
         @Override
         public T next() {
-            final T item = current.value;
-            current = current.next;
+            final T item = this.current.value;
+            this.previous = this.current;
+            this.current = this.current.next;
             return item;
+        }
+
+        @Override
+        public void remove() {
+            if(!hasNext())
+                throw new NoSuchElementException();
+
+            removeAfter(this.previous);
+            if(hasNext())
+                this.current = this.previous.next;
+            else
+                this.current = this.previous = null;
         }
     }
 }

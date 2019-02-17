@@ -23,6 +23,7 @@ _Queue_
 -------------------------------------------------
 * Move To Front
 * Queue Implementation using 2 Stacks (2 Implementations: fast enqueue; fast dequeue)
+* Josephus Problem
 
 _Steque_
 --------

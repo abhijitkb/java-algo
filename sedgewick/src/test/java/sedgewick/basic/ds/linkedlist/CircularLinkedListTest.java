@@ -5,7 +5,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -44,5 +46,25 @@ class CircularLinkedListTest {
         values.forEach(circularLinkedList::remove);
 
         Assertions.assertTrue(circularLinkedList.isEmpty());
+    }
+
+    @Test
+    void testRemoveThroughIterator() {
+        List<Integer> values = Arrays.asList(1, 2, 3, 4);
+        values.forEach(circularLinkedList::add);
+
+        Iterator<Integer> itr = circularLinkedList.iterator();
+        while(itr.hasNext()) {
+            itr.remove();
+        }
+
+        Assertions.assertTrue(circularLinkedList.isEmpty());
+    }
+
+    @Test
+    void testRemoveThroughIteratorEmptyList() {
+        this.circularLinkedList = new CircularLinkedList<>();
+        Iterator<Integer> itr = circularLinkedList.iterator();
+        assertThrows(NoSuchElementException.class, () -> itr.remove());
     }
 }
