@@ -1,49 +1,60 @@
 package sedgewick.basic.problems.stack;
 
-import sedgewick.basic.ds.stack.ResizingArrayStack;
-import sedgewick.basic.ds.stack.Stack;
+import java.util.NoSuchElementException;
 
-import java.util.List;
-import java.util.Objects;
-
-public class StackGenerality {
-
-    /**
-     * Checks to see for a given series of input for a stack, can the output be matched.
-     * <p>
-     *     This only works with unique numbers
-     * </p>
-     * @param input   Input for Stack
-     * @param output  Expected possible output permutation
-     * @param <T>     Underlying Type
-     * @return        True is the output pattern can be matched.
-     */
-    public static <T> boolean canMatchOutputUnique(List<T> input, List<T> output) {
-        Objects.requireNonNull(input);
-        Objects.requireNonNull(output);
-
-        Stack<T> stack = new ResizingArrayStack<>();
-
-        final int outputLength = output.size();
-        int curOpIdx = 0;
-
-        try {
-            for(T value : input) {
-                stack.push(value);
-
-                while((curOpIdx < outputLength) && !stack.isEmpty() ){
-                    if(stack.top().equals(output.get(curOpIdx))) {
-                        stack.pop();
-                        ++curOpIdx;
-                    } else {
-                        break;
-                    }
-                }
-            }
-        } catch (Exception e) {
-
+/**
+ * <b>Input:</b> Sequence of intermixed push and pop operations.<br/>
+ *  <lu>
+ *      <li><i>Push Directives: </i>+ve integers: Push operations with integer value as input</li>
+ *      <li><i>Pop Directives: </i>-ve integers: Pop operations with integer values being popped values</li>
+ *  </lu>
+ * <b>Output:</b> True if the given set of operations does not produce an underflow error. <br/>
+ * <b>Constraints:</b>
+ *  <lu>
+ *      <li>Linear Time Algorithm</li>
+ *      <li>Integers can not be stored in a data structure</li>
+ *      <li>Space complexity: Amount of space independent of N</li>
+ *  </lu>
+ */
+class StackGenerality {
+    static boolean checkStackOperations(final String operations) {
+        String[] tokens = operations.split("\\s");
+        final int TOKENS = tokens.length;
+        int[]  directives = new int[TOKENS];
+        for(int i = 0; i < TOKENS; ++i) {
+            directives[i] = Integer.parseInt(tokens[i]);
         }
 
-        return stack.isEmpty();
+        try {
+            return getValidNextOperationIndex(directives, 0) == TOKENS;
+        } catch (NoSuchElementException e) {
+            return false;   // underflow exception
+        }
+    }
+
+    private static int getValidNextOperationIndex(int[] directives, int startIndex) throws NoSuchElementException {
+        int stackTop = startIndex;
+        int operationIndex = startIndex;
+        boolean hasPopped = false;
+
+        while((operationIndex < directives.length) && (stackTop >= startIndex)) {
+            // check for valid pop directive
+            if(directives[operationIndex] < 0) {
+                // check for mismatch of expected pop and the actual pop
+                if(-directives[stackTop--] != directives[operationIndex++]) {
+                   throw new NoSuchElementException(String.format("At index %d: Expected Pop: %d; Actual Pop: %d", operationIndex, directives[stackTop], directives[operationIndex]));
+                }
+
+                hasPopped = true;
+            } else {
+                if(hasPopped) {
+                    operationIndex = getValidNextOperationIndex(directives, operationIndex);
+                } else {
+                    stackTop = operationIndex++;
+                }
+            }
+        }
+
+        return operationIndex;
     }
 }
