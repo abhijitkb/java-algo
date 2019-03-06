@@ -7,21 +7,20 @@ import java.util.Arrays;
  */
 public class ThreeSum {
 
-    public static int lowerBound(final int [] input, int low, int high, int value) {
+    static int lowerBound(final int [] input, int low, int high, int value) {
         int mid;
-        int index = -1;
 
         while(low <= high) {
-            mid = low + (high - low) >> 1;
+            mid = low + ((high - low) >> 1);
             if(input[mid] > value) {
                 low = mid + 1;
             } else {
                 if(input[mid] == value)
-                    index = mid;
+                    return mid;
                 high = mid - 1;
             }
         }
-        return index;
+        return -1;
     }
 
     public static int getThreeSumCount(int [] values) {
