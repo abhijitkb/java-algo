@@ -46,6 +46,7 @@ _General_
 * Accumulator - Welford's online algorithm for calculating mean, variance and stddev for streaming numbers.
 * Print common int in two integer arrays (of same length) in sorted order.
 * Faster Three Sum
+* Closest Pair (in 1D) in Linearithmic time.
 
 _Search_
 --------
